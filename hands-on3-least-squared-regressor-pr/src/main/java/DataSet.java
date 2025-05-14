@@ -24,20 +24,20 @@ public class DataSet {
         testingX = new float[testingSize];
         testingY = new float[testingSize];
 
-        // Realizar una copia aleatoria para el conjunto de entrenamiento
+        // Selección aleatoria para entrenamiento (70%)
         boolean[] used = new boolean[totalSize];
         for (int i = 0; i < trainingSize; i++) {
             int index;
             do {
                 index = (int) (Math.random() * totalSize);
-            } while (used[index]);
+            } while (used[index]); // Asegura que no se repitan índices
 
             used[index] = true;
             trainingX[i] = x[index];
             trainingY[i] = y[index];
         }
 
-        // El resto va al conjunto de prueba
+        // El resto va al conjunto de prueba (30%)
         int testIndex = 0;
         for (int i = 0; i < totalSize; i++) {
             if (!used[i]) {

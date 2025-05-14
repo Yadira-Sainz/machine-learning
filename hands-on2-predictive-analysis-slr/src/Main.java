@@ -27,10 +27,13 @@ public class Main {
             float[] xTest = new float[totalSize - trainSize];
             float[] yTest = new float[totalSize - trainSize];
 
+            // Asignación del conjunto de entrenamiento (70%)
             for (int j = 0; j < trainSize; j++) {
                 xTrain[j] = x[indices.get(j)];
                 yTrain[j] = y[indices.get(j)];
             }
+
+            // Asignación del conjunto de prueba (30%)
             for (int j = trainSize; j < totalSize; j++) {
                 xTest[j - trainSize] = x[indices.get(j)];
                 yTest[j - trainSize] = y[indices.get(j)];
